@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:get/get.dart';
+import '../Routes/app_routes.dart';
 import 'register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -235,12 +236,11 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              if (emailController.text.trim()=="sadiajavaid123@gmail.com" && passwordcontroller.text=="12345"){
-                                Get.snackbar( "Success", "Login Successful",);
-                                Get.to(RegisterPage());
-                              }
-                              else{
-                                Get.snackbar("Error", "Invalid email or password",);
+                              if (emailController.text.trim() == "sadiajavaid123@gmail.com" && passwordcontroller.text == "12345") {
+                                Get.toNamed(AppRoutes.register);
+                                Get.snackbar("Success", "Login Successful");
+                              } else {
+                                Get.snackbar("Error", "Invalid email or password");
                               }
                             },
                             style: ElevatedButton.styleFrom(
@@ -269,7 +269,10 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                             SizedBox(width: 5),
-                            TextButton(onPressed: (){Get.to(()=> RegisterPage());},
+                            TextButton(
+                              onPressed: () {
+                                Get.toNamed(AppRoutes.register);
+                              },
                               child: Text(
                                 'Create Account',
                                 style: TextStyle(

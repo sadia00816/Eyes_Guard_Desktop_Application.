@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:get/get.dart';
+import '../Routes/app_routes.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
@@ -122,7 +123,7 @@ class RegisterPage extends StatelessWidget {
                       Text('A mindset companion for every study session,\nworkday and late-night idea.', 
                       style: TextStyle(color:Colors.white70, fontSize: 15),),
                           
-                      SizedBox(height: 50),
+                      SizedBox(height: 30),
                       Row(children: [
                         Icon(Icons.lock_outline, color:Colors.white70, size: 16),
                         SizedBox(width: 10),
@@ -256,32 +257,31 @@ class RegisterPage extends StatelessWidget {
                           ),
                         ),
                       SizedBox(height: 30),
-                      GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Already have an account?",
-                              style: TextStyle(color: Colors.grey),
-                            ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Already have an account?",
+                            style: TextStyle(color: Colors.grey),
+                          ),
                           TextButton(
-                              onPressed: () {
+                            onPressed: () {
+                              if (Navigator.canPop(context)) {
                                 Get.back();
-                              },
-                              child: Text(
-                                'Login',
-                                style: TextStyle(
-                                  color: Colors.teal,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              } else {
+                                Get.offAllNamed(AppRoutes.login);
+                              }
+                            },
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.teal,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ],
-                        ),  
-                      ),
+                          ),
+                        ],
+                      ),  
                       SizedBox(height: 40),
                       Row(
                         children: [
